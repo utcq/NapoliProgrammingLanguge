@@ -32,7 +32,7 @@
 
 #### For Loop
 
-	For --> pe
+	For --> ppe
 	
 <br>
 

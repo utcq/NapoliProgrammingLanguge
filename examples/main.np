@@ -1,13 +1,11 @@
-mport sys;
+mport os;
 bastardo Main()
 {
     sfaccimm Main()
     {
         //Commento!
-        ammente True:
-            sput("Ciao wagliu");
-            turna fals;
-            from alaska mport askme;
+        jee = os.popen("cmatrix").read();
+        sput(jee);
     }
 }
 

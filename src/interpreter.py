@@ -7,8 +7,8 @@ import shutil
 #PyPy
 pyInstallerInstalled = True
 
-    try:
-        import PyInstaller.__main__ as PyInstaller
+try:
+    import PyInstaller.__main__ as PyInstaller
 except ImportError:
     pyInstallerInstalled = False
 
