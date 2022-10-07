@@ -74,7 +74,7 @@
 	
 	Null = nente
 	
-	Else if = si ne
+	Else if = si noni
 	
 	
 <br>

@@ -4,8 +4,14 @@ bastardo Main()
     sfaccimm Main()
     {
         //Commento!
-        jee = os.popen("cmatrix").read();
-        sput(jee);
+        jee = os.popen("uname -a").read();
+        si "-zen" in jee:
+            sput("waaa!");
+        si ne "-lts" in jee:
+            sput("aaaa!");
+        autrimenti:
+            sput("ok");
+        //sput(jee);
     }
 }
 

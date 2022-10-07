@@ -110,7 +110,7 @@ class Parser:
 
         for line in code.splitlines():
             skipLine = False
-            for token in ("sfaccimm", "ammente", "pe", "si", "autrimenti", "si non", "co", "cata"):
+            for token in ("sfaccimm", "ammente", "pe", "si", "autrimenti", "si noni", "co", "cata"):
                 if token in line and not self.IsInString(token, line):
                     skipLine = True
             if ''.join(line.split()).startswith(("{", "}", "\n", "bastardo")):
@@ -142,8 +142,8 @@ class Parser:
     def Parsepe(self, code: str) -> str:
         code = code
         for line in code.splitlines():
-            if "pe" in line and not self.IsInString("pe", line):
-                code = code.replace(line, line.replace("pe", "for"))
+            if "ppe" in line and not self.IsInString("ppe", line):
+                code = code.replace(line, line.replace("ppe", "for"))
         return code
 
     def Parsesi(self, code: str) -> str:
