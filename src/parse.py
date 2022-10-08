@@ -17,6 +17,7 @@ class Parser:
         code = self.ParseKeyWords(code)
         code = self.ParseEOL(code)
         code = self.Parsenamespace(code)
+        code = self.Parsestruct(code)
         code = self.ParseBraces(code)
         code = self.Parsesfaccimms(code)
         code = self.Parsesammente(code)
@@ -34,6 +35,9 @@ class Parser:
         code = """try:
     from pointers import _
     from pointers import c_malloc as malloc
+    from pointers import c_free as free
+    from pointers import strcpy, cast
+    from pointers import Struct
 except:
     pass
 """ + code
@@ -125,7 +129,7 @@ except:
 
         for line in code.splitlines():
             skipLine = False
-            for token in ("sfaccimm","ferm", "ammente", "ppe", "si", "autrimenti", "si non", "ccu", "cata", "namespace", '"""'):
+            for token in ("sfaccimm","ferm", "ammente", "ppe", "si", "autrimenti", "si non", "ccu", "cata", "namespace", '"""', "struct"):
                 if token in line and not self.IsInString(token, line):
                     skipLine = True
             if ''.join(line.split()).startswith(("{", "}", "\n", "camorra")):
@@ -177,6 +181,17 @@ except:
                 new = ztra + "(\n" + str(',\n'.join(la)).strip() + ")"
                 code = code.replace(line, new)
         return code
+
+    def Parsestruct(self, code: str) -> str:
+        code = code
+        for line in code.splitlines():
+            if "struct" in line and not self.IsInString("struct", line) and line.split(" ")[0] == "struct":
+                NAME = line.split(" ")[1]
+                newline = f"camorra {NAME}(Struct)"
+                code = code.replace(line, newline)
+        return code
+
+
 
 
 

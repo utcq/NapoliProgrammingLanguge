@@ -1,5 +1,6 @@
 from pointers import c_malloc as malloc 
 from pointers import to_ptr
+from pointers import Struct
 
 
 name = "Unity"
@@ -10,4 +11,7 @@ tname = pname.dereference()
 print(name)
 print(pname)
 print(tname)
+
+class DivT(Struct):
+    quot: int
 

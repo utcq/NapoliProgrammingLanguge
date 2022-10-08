@@ -47,9 +47,27 @@
 <br>
 
 #### Pointers
+
 	declare --> _&var
+	
 	call --> _*var
+	
 	malloc  --> malloc
+	
+	strcpy --> strcpy
+	
+	cast --> cast
+	
+	
+<br>
+
+#### Structs
+	struct NAME {
+	
+		age: int;
+		
+	}
+	
 <br>
 
 #### While Loop
@@ -93,7 +111,8 @@
 
 #### Carbage Collector
 
-	free --> liberu
+	free --> liberu     (for vars)
+	free --> free        (for pointers)
 	
 	
 <br>

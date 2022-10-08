@@ -9,6 +9,11 @@ namespace bastardi
     }
 }
 
+struct data
+{
+    age: int;
+}
+
 camorra Main()
 {
     ferm sfaccimm add(chiste, x, y) is int
