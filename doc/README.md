@@ -145,7 +145,7 @@
 
 ### Conditions
 
-	If = si
+	If = si       [you can also use IF with ()]
 	
 	Else = autrimenti
 	

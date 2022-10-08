@@ -10,3 +10,4 @@ tname = pname.dereference()
 print(name)
 print(pname)
 print(tname)
+

@@ -25,6 +25,7 @@ camorra Main()
         liberu(nome);
         bastardi::add-->5-->10;
         std::callable-->"Napoli";
+        assaje pointer = malloc(3);
     }
 }
 

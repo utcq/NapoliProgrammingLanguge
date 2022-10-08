@@ -1,3 +1,8 @@
+try:
+    from pointers import _
+    from pointers import c_malloc as malloc
+except:
+    pass
 import os
 class bastardi:
         def add(x,y) -> int:
@@ -8,14 +13,20 @@ class Main():
         def Main(self):
                 print(Main().add(1, 2))
                 nome = "Ciro"
+                pname = _&nome
+                nname = _*pname
+                print(nname)
                 del nome
                 bastardi.add(
         5,
         10
         )
-                withut(
+                callable(
         "Napoli"
         )
+                pointer = malloc(3)
+                if you == gay:
+                    print(yes)
 """
 Hello
 """
