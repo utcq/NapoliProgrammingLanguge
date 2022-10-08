@@ -1,16 +1,31 @@
 mport os;
+
+
+namespace bastardi
+{
+    sfaccimm add(x,y) is int
+    {
+        turna x+y;
+    }
+}
+
 camorra Main()
 {
     ferm sfaccimm add(chiste, x, y) is int
     {
         turna x + y;
     }
-    sfaccimm Main()
+    sfaccimm Main(chiste)
     {
         sput(Main().add(1, 2));
         assaje nome = "Ciro";
         liberu(nome);
+        bastardi::add-->5-->10;
     }
 }
+
+/*
+Hello;
+*/
 
 

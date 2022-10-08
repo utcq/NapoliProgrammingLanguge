@@ -26,6 +26,13 @@
 	
 <br>
 
+
+#### Pseudo Namespaces
+
+	bastardi::add << 42 << 50     -->      bastardi:add-->42-->50
+	
+<br>
+
 #### While Loop
 	While--> ammente
 	

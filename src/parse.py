@@ -16,6 +16,7 @@ class Parser:
         code = self.ParseComments(code)
         code = self.ParseKeyWords(code)
         code = self.ParseEOL(code)
+        code = self.Parsenamespace(code)
         code = self.ParseBraces(code)
         code = self.Parsesfaccimms(code)
         code = self.Parsesammente(code)
@@ -45,7 +46,7 @@ class Parser:
                         newLine = line.partition("//")[0]
                         code = code.replace(line, newLine)
             if "/*" in line or "*/" in line:
-                if not self.IsinString("/*") or not self.IsInSting("*/"):
+                if not self.IsInString("/*", line) or not self.IsInSting("*/", line):
                     if line.startswith("/*") or line.startswith("*/"):
                         code = code.replace("/*", '"""').replace("*/", '"""')
         return code
@@ -118,7 +119,7 @@ class Parser:
 
         for line in code.splitlines():
             skipLine = False
-            for token in ("sfaccimm","ferm", "ammente", "ppe", "si", "autrimenti", "si non", "co", "de"):
+            for token in ("sfaccimm","ferm", "ammente", "ppe", "si", "autrimenti", "si non", "co", "de", "namespace", '"""'):
                 if token in line and not self.IsInString(token, line):
                     skipLine = True
             if ''.join(line.split()).startswith(("{", "}", "\n", "camorra")):
@@ -153,6 +154,22 @@ class Parser:
             if "ppe" in line and not self.IsInString("ppe", line):
                 code = code.replace(line, line.replace("ppe", "for"))
         return code
+
+
+    def Parsenamespace(self, code: str) -> str:
+        code = code
+        for line in code.splitlines():
+            if "namespace" in line and not self.IsInString("namespace", line) and line.split(" ")[0] == "namespace":
+                code = code.replace(line, line.replace("namespace", "camorra"))
+            if "::" in line and "-->" in line:
+                la = line.split("-->")
+                ztra = la[0].replace("::", ".")
+                del la[0]
+                new = ztra + "(\n" + str(',\n'.join(la)).strip() + ")"
+                code = code.replace(line, new)
+        return code
+
+
 
     def Parseliberu(self, code: str) -> str:
         code = code
@@ -297,7 +314,7 @@ class Parser:
         for line in code.splitlines():
             if "def" in line:
                 if (line.partition("def")[0].strip() == ""):
-                    code = code.replace(line, line.replace("(", "(self,"))
+                    code = code.replace(line, line.replace("(", "("))
         for line in code.splitlines():
             if "ferm" in line:
                 code = code.replace(line, line.replace("ferm ", ""))
