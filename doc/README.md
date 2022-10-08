@@ -84,7 +84,7 @@
 	
 	True = over
 	
-	False = fals
+	False = falz
 	
 	Null = nente
 	

@@ -98,8 +98,8 @@ class Parser:
             if "over" in line and not self.IsInString("over", line):
                 code = code.replace(line, line.replace("over", "True"))
         for line in code.splitlines():
-            if "fals" in line and not self.IsInString("fals", line):
-                code = code.replace(line, line.replace("fals", "False"))
+            if "falz" in line and not self.IsInString("falz", line):
+                code = code.replace(line, line.replace("falz", "False"))
         for line in code.splitlines():
             if "nente" in line and not self.IsInString("nente", line):
                 code = code.replace(line, line.replace("nente", "None"))
