@@ -31,6 +31,12 @@ class Parser:
         code = self.Parseturna(code)
         code = self.CleanCode(code)
         code = self.AddEntryPoint(code)
+        code = """try:
+    from pointers import _
+    from pointers import c_malloc as malloc
+except:
+    pass
+""" + code
 
         #Dump code to file
         with open("output.py", "w") as f:

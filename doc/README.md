@@ -46,6 +46,12 @@
 	
 <br>
 
+#### Pointers
+	declare --> _&var
+	call --> _*var
+	malloc  --> malloc
+<br>
+
 #### While Loop
 	While--> ammente
 	

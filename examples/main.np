@@ -19,9 +19,12 @@ camorra Main()
     {
         sput(Main().add(1, 2));
         assaje nome = "Ciro";
+        assaje pname = _&nome;
+        assaje nname = _*pname;
+        sput(nname);
         liberu(nome);
         bastardi::add-->5-->10;
-        std::cout-->"Napoli";
+        std::callable-->"Napoli";
     }
 }
 
