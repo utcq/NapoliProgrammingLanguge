@@ -27,9 +27,15 @@
 <br>
 
 
-#### Pseudo Namespaces
+#### Pseudo Namespaces (to import namespaces see [importing](https://github.com/UnityTheCoder/NapoliProgrammingLanguge/blob/main/doc/README.md#importing-files))
 
 	bastardi::add << 42 << 50     -->      bastardi:add-->42-->50
+	
+<br>
+
+#### Namespaces Declaration
+
+	namespace bastardi {}
 	
 <br>
 
