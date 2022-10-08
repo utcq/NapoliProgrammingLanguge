@@ -44,6 +44,10 @@ class Parser:
                     else:
                         newLine = line.partition("//")[0]
                         code = code.replace(line, newLine)
+            if "/*" in line or "*/" in line:
+                if not self.IsinString("/*") or not self.IsInSting("*/"):
+                    if line.startswith("/*") or line.startswith("*/"):
+                        code = code.replace("/*", '"""').replace("*/", '"""')
         return code
 
     def ParseInclude(self, code: str) -> str:

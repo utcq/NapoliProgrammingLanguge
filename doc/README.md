@@ -93,6 +93,15 @@
 	
 <br>
 
+
+#### Comments
+
+	SingleLine = //
+	MultiLine = /* */
+	
+	
+<br>
+
 ### Keywords
 
 	Self = chiste
