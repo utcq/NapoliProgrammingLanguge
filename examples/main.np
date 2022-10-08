@@ -1,17 +1,14 @@
 mport os;
-bastardo Main()
+camorra Main()
 {
+    ferm sfaccimm add(chiste, x, y) is int
+    {
+        turna x + y;
+    }
     sfaccimm Main()
     {
-        //Commento!
-        jee = os.popen("uname -a").read();
-        si "-zen" in jee:
-            sput("waaa!");
-        si ne "-lts" in jee:
-            sput("aaaa!");
-        autrimenti:
-            sput("ok");
-        //sput(jee);
+        sput(Main().add(1, 2));
+        assaje nome = "Ciro";
     }
 }
 

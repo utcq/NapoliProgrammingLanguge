@@ -22,7 +22,7 @@
 
 #### Class Declaration
 
-	Class --> bastardo
+	Class --> camorra
 	
 <br>
 #### While Loop
@@ -60,6 +60,20 @@
 #### Return
 
 	Return --> turna
+	
+	
+<br>
+
+#### Return Type
+
+	->   =   is
+	
+	
+<br>
+
+#### Static Functions
+
+	static -> ferm
 	
 	
 <br>

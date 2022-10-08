@@ -1,6 +1,8 @@
 from error import Error
 
+
 class Parser:
+    static = []
     def __init__(self, code: str):
         #Pass in code
         self.code = code
@@ -18,6 +20,7 @@ class Parser:
         code = self.Parsesfaccimms(code)
         code = self.Parsesammente(code)
         code = self.Parsesi(code)
+        code = self.Parseassaje(code)
         code = self.Parsepe(code)
         code = self.Parseautrimenti(code)
         code = self.Parseco(code)
@@ -110,10 +113,10 @@ class Parser:
 
         for line in code.splitlines():
             skipLine = False
-            for token in ("sfaccimm", "ammente", "pe", "si", "autrimenti", "si noni", "co", "cata"):
+            for token in ("sfaccimm","ferm", "ammente", "ppe", "si", "autrimenti", "si non", "co", "de"):
                 if token in line and not self.IsInString(token, line):
                     skipLine = True
-            if ''.join(line.split()).startswith(("{", "}", "\n", "bastardo")):
+            if ''.join(line.split()).startswith(("{", "}", "\n", "camorra")):
                 skipLine = True
             elif line.strip() == "":
                 skipLine = True
@@ -146,6 +149,14 @@ class Parser:
                 code = code.replace(line, line.replace("ppe", "for"))
         return code
 
+    def Parseassaje(self, code: str) -> str:
+        code = code
+        for line in code.splitlines():
+            if "assaje " in line and not self.IsInString("assaje ", line) and "=" in line:
+                code = code.replace(line, line.replace("assaje ", ""))
+        return code
+
+
     def Parsesi(self, code: str) -> str:
         code = code
         for line in code.splitlines():
@@ -171,7 +182,7 @@ class Parser:
         code = code
         for line in code.splitlines():
             if "cata" in line and not self.IsInString("cata", line):
-                code = code.replace(line, line.replace("cata", "from"))
+                code = code.replace(line, line.replace("de", "from"))
         return code
 
     def Parseturna(self, code: str) -> str:
@@ -226,9 +237,9 @@ class Parser:
                             lineChars[i] = "\n"
                             break
                 line = "".join(lineChars)
-            if "bastardo" in line:
-                if not self.IsInString("bastardo", line):
-                    line = line.replace("bastardo", "class")
+            if "camorra" in line:
+                if not self.IsInString("camorra", line):
+                    line = line.replace("camorra", "class")
                     line = "\n"+" ".join(line.split())
             if "sfaccimm" in line:
                 if line.partition("sfaccimm")[0].count("\"") != 0 and line.partition("sfaccimm")[0].count("\"") % 2 == 0:
@@ -270,6 +281,15 @@ class Parser:
             if "def" in line:
                 if (line.partition("def")[0].strip() == ""):
                     code = code.replace(line, line.replace("(", "(self,"))
+        for line in code.splitlines():
+            if "ferm" in line:
+                code = code.replace(line, line.replace("ferm ", ""))
+                global static
+                nzr = line.split(" ")
+                num = nzr.index("def")
+                new = nzr[num+1].replace('(', " ").replace(")","").split(" ")[0]
+
+                self.static.append(new)
         return code
 
     def Parsesammente(self, code: str) -> str:
@@ -343,11 +363,13 @@ class Parser:
 
     def AddEntryPoint(self, code: str) -> str:
         code += "\n"
-        code += '''
+        code += f'''
 if __name__ == "__main__":
     main = Main()
-    main.Main()
-        '''
+'''
+        for item in self.static:
+            code+=f"    staticmethod(main.{item})\n"
+        code += '''    main.Main()'''
 
         return code
 
