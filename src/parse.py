@@ -119,7 +119,7 @@ class Parser:
 
         for line in code.splitlines():
             skipLine = False
-            for token in ("sfaccimm","ferm", "ammente", "ppe", "si", "autrimenti", "si non", "co", "de", "namespace", '"""'):
+            for token in ("sfaccimm","ferm", "ammente", "ppe", "si", "autrimenti", "si non", "ccu", "cata", "namespace", '"""'):
                 if token in line and not self.IsInString(token, line):
                     skipLine = True
             if ''.join(line.split()).startswith(("{", "}", "\n", "camorra")):
@@ -163,7 +163,10 @@ class Parser:
                 code = code.replace(line, line.replace("namespace", "camorra"))
             if "::" in line and "-->" in line:
                 la = line.split("-->")
-                ztra = la[0].replace("::", ".")
+                if "std::" in line:
+                    ztra = la[0].replace("std::", "")
+                else:
+                    ztra = la[0].replace("::", ".")
                 del la[0]
                 new = ztra + "(\n" + str(',\n'.join(la)).strip() + ")"
                 code = code.replace(line, new)
@@ -194,7 +197,7 @@ class Parser:
     def Parsesi(self, code: str) -> str:
         code = code
         for line in code.splitlines():
-            if "si" in line and not self.IsInString("si", line):
+            if "si" in line and not self.IsInString("si", line) and ":" in line:
                 code = code.replace(line, line.replace("si", "if"))
         return code
 
@@ -208,15 +211,15 @@ class Parser:
     def Parseco(self, code: str) -> str:
         code = code
         for line in code.splitlines():
-            if "co" in line and not self.IsInString("co", line):
-                code = code.replace(line, line.replace("co", "with"))
+            if "ccu" in line and not self.IsInString("ccu", line) and ":" in line:
+                code = code.replace(line, line.replace("ccu", "with"))
         return code
 
     def Parsede(self, code: str) -> str:
         code = code
         for line in code.splitlines():
             if "cata" in line and not self.IsInString("cata", line):
-                code = code.replace(line, line.replace("de", "from"))
+                code = code.replace(line, line.replace("cata", "from"))
         return code
 
     def Parseturna(self, code: str) -> str:

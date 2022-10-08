@@ -21,6 +21,7 @@ camorra Main()
         assaje nome = "Ciro";
         liberu(nome);
         bastardi::add-->5-->10;
+        std::cout-->"Napoli";
     }
 }
 

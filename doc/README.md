@@ -33,6 +33,13 @@
 	
 <br>
 
+#### namespace std autoremove
+
+	if you are used to use std namespace, chill
+	the transpiler will autoremove the namespace call for you
+	
+<br>
+
 #### Namespaces Declaration
 
 	namespace bastardi {}
@@ -136,7 +143,7 @@
 	
 	Else = autrimenti
 	
-	With = co
+	With = ccu
 	
 	From = cata
 	
