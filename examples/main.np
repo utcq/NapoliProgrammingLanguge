@@ -9,6 +9,7 @@ camorra Main()
     {
         sput(Main().add(1, 2));
         assaje nome = "Ciro";
+        liberu(nome);
     }
 }
 

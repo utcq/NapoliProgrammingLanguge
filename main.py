@@ -5,6 +5,7 @@ class Main():
         def Main(self,):
                 print(Main().add(1, 2))
                 nome = "Ciro"
+                del nome
 
 if __name__ == "__main__":
     main = Main()

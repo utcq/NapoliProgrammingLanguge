@@ -57,6 +57,20 @@
 	
 <br>
 
+#### Declaring Variables
+
+	Var --> assaje
+	
+	
+<br>
+
+#### Carbage Collector
+
+	free --> liberu
+	
+	
+<br>
+
 #### Return
 
 	Return --> turna

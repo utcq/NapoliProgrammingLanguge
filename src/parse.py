@@ -21,6 +21,7 @@ class Parser:
         code = self.Parsesammente(code)
         code = self.Parsesi(code)
         code = self.Parseassaje(code)
+        code = self.Parseliberu(code)
         code = self.Parsepe(code)
         code = self.Parseautrimenti(code)
         code = self.Parseco(code)
@@ -148,6 +149,18 @@ class Parser:
             if "ppe" in line and not self.IsInString("ppe", line):
                 code = code.replace(line, line.replace("ppe", "for"))
         return code
+
+    def Parseliberu(self, code: str) -> str:
+        code = code
+        for line in code.splitlines():
+            if "liberu(" in line and not self.IsInString("liberu(", line) and ")" in line:
+                ne = str("del " + line.replace(")", "").split("(")[1])
+                spac = line.split("liberu")[0]
+                ne = spac + ne
+                code = code.replace(line, ne)
+
+        return code
+
 
     def Parseassaje(self, code: str) -> str:
         code = code
